@@ -8,8 +8,8 @@
 #
 
 APP_DIR = @__DIR__
-include("$APP_DIR/Skill/ADoSnipsTemplate.jl")
-import Main.ADoSnipsTemplate
+include("$APP_DIR/Skill/ADoSnipsFire.jl")
+import Main.ADoSnipsFire
 
 global INTENT_ACTIONS
-append!(INTENT_ACTIONS, ADoSnipsTemplate.getIntentActions())
+append!(INTENT_ACTIONS, ADoSnipsFire.getIntentActions())
