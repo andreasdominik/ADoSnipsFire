@@ -1,45 +1,61 @@
-#
-# actions called by the main callback()
-# provide one function for each intent, defined in the Snips Console.
-#
-# ... and link the function with the intent name as shown in config.jl
-#
-# The functions will be called by the main callback function with
-# 2 arguments:
-# * MQTT-Topic as String
-# * MQTT-Payload (The JSON part) as a nested dictionary, with all keys
-#   as Symbols (Julia-style)
-#
-"""
-function templateAction(topic, payload)
 
-    Dummyaction for the template.
 """
-function templateAction(topic, payload)
+    switchOnOffActions(topic, payload)
+
+Switch on the fire stick with the adb-script.
+"""
+function switchOnOffActions(topic, payload)
 
     # log:
-    println("[ADoSnipsTemplate]: action templateAction() started.")
-
-    # get my name from config.ini:
     #
-    myName = Snips.getConfig(INI_MY_NAME)
-    if myName == nothing
-        Snips.publishEndSession(:noname)
+    println("[ADoSnipsFire]: action switchOnOffActions() started.")
+
+    # ignore, if not responsible (other device):
+    #
+    device = Snips.extractSlotValue(payload, SLOT_DEVICE)
+    if device == nothing || !( device in ["amazon_fire",
+                    "ARD_media_centre", "ZDF_media_centre"] )
         return false
     end
 
-    # get the word to repeat from slot:
+
+    # ROOMs are not yet supported -> only ONE TV  in assistent possible.
     #
-    word = Snips.extractSlotValue(payload, SLOT_WORD)
-    if word == nothing
+    # room = Snips.extractSlotValue(payload, SLOT_ROOM)
+    # if room == nothing
+    #     room = Snips.getSiteId()
+    # end
+
+    onOrOff = Snips.extractSlotValue(payload, SLOT_ON_OFF)
+    if onOrOff == nothing || !(onOrOff in ["ON", "OFF"])
         Snips.publishEndSession(:dunno)
         return true
     end
 
-    # say who you are:
+    # println(">>> $onOrOff, $device")
+
+    # all the same with off:
     #
-    Snips.publishSay(:bravo)
-    Snips.publishEndSession("""$(Snips.langText(:iam)) $myName.
-                            $(Snips.langText(:isay)) $word""")
-    return true
+    Snips.isConfigValid(INI_FIRE_IP) || return true
+    Snips.isConfigValid(INI_TV) || return true
+
+    if onOrOff == "OFF"
+        Snips.publishEndSession(:switchoff)
+        goHome(Snips.getConfig(INI_FIRE_IP))
+        switchoff(Snips.getConfig(INI_FIRE_IP))
+        switchoffTV(Snips.getConfig(INI_TV))
+    else
+        Snips.publishEndSession(:switchon)
+        switchonTV(Snips.getConfig(INI_TV))
+        switchon(Snips.getConfig(INI_FIRE_IP))
+        sleep(10)
+        selectAmazonInTV(Snips.getConfig(INI_TV))
+
+        if device == "ARD_media_centre"
+            goARD(Snips.getConfig(INI_TV))
+        elseif device == "ARD_media_centre"
+            goZDF(Snips.getConfig(INI_TV))
+        end
+    end
+    return false
 end

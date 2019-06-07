@@ -64,4 +64,5 @@ for CMD in $COMMANDS ; do
       $ADB -s $IP:$PORT shell am start -n ${MAIN::-1}
       ;;
     esac
+    sleep 0.5
     done

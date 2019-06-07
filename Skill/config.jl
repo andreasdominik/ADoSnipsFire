@@ -21,11 +21,14 @@ Snips.setModule(@__MODULE__)
 # Slots:
 # Name of slots to be extracted from intents:
 #
-const SLOT_WORD = "a_word"
+const SLOT_ROOM = "room"
+const SLOT_DEVICE = "device"
+const SLOT_ON_OFF = "on_or_off"
 
 # name of entry in config.ini:
 #
-const INI_MY_NAME = "my_name"
+const INI_FIRE_IP = "fire_ip"
+const INI_TV = "tv_viera"
 
 #
 # link between actions and intents:
