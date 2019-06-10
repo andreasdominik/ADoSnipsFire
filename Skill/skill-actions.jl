@@ -50,7 +50,7 @@ function switchOnOffActions(topic, payload)
         tvOFF()
     else
         Snips.publishEndSession(:switchon)
-        tvSwitchon()
+        tvON()
         amazonON()
         sleep(10)
         tvSelectAmazon()

@@ -45,6 +45,10 @@ The fire device is remote-controlled via ADB. Please see the respective tuorials
 how to prepare the Fire Stick to ADB
 (https://developer.amazon.com/docs/fire-tv/connecting-adb-to-device.html).
 
+In addition it is necessary to install `adb` on the RPi (`sudo apt install adb`
+will do the job!).
+
+
 # Julia
 
 This skill is (like the entire SnipsHermesQnD framework) written in the

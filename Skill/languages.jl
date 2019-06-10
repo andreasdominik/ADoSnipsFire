@@ -5,7 +5,7 @@ Snips.addText("de", :switchoff, "Ich schalte den Fernseher und den Fire Stick au
 Snips.addText("de", :ok, "OK.")
 
 Snips.addText("en", :noip, "I am not able to find the IP address of the Fire device in config.ini")
-Snipe.addText("en", :dunno, "I don't know, what to do")
+Snips.addText("en", :dunno, "I don't know, what to do")
 Snips.addText("en", :switchon, "I switch in the tv and the Fire device. Pleas be patient!")
 Snips.addText("en", :switchoff, "I switch off the tv and the fire device.")
 Snips.addText("en", :ok, "OK.")

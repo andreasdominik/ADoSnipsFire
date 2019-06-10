@@ -36,20 +36,32 @@ end
 function adbCmds(cmds)
 
     ip = Snips.getConfig(INI_FIRE_IP)
-    return tryrun(`$ADB $ip $(split(cmds))`, errorMsg =
+    return Snips.tryrun(`$ADB $ip $(split(cmds))`, errorMsg =
                         """An error occured while sending commands $cmds
-                        to Amazon fire."""
+                        to Amazon fire.""")
 end
 
 
 
 
 
-function tvSwitchon()
+function tvON()
 
     trigger = Dict(:room => Snips.getSiteId(),
                    :device => Snips.getConfig(INI_TV),
                    :commands => ["wakeup"],
+                   :delay => 0.5
+                   )
+
+    Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
+end
+
+
+function tvOFF()
+
+    trigger = Dict(:room => Snips.getSiteId(),
+                   :device => Snips.getConfig(INI_TV),
+                   :commands => ["AV", "up", "up", "standby"],
                    :delay => 0.5
                    )
 
