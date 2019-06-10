@@ -19,7 +19,7 @@ function switchOnOffActions(topic, payload)
     end
 
 
-    # ROOMs are not yet supported -> only ONE TV  in assistent possible.
+    # ROOMs are not yet supported -> only ONE Fire  in assistent possible.
     #
     # room = Snips.extractSlotValue(payload, SLOT_ROOM)
     # if room == nothing
@@ -34,27 +34,31 @@ function switchOnOffActions(topic, payload)
 
     # println(">>> $onOrOff, $device")
 
-    # all the same with off:
+    # check ini vals:
     #
-    Snips.isConfigValid(INI_FIRE_IP) || return true
-    Snips.isConfigValid(INI_TV) || return true
+    if !Snips.isConfigValid(INI_FIRE_IP) ||
+       !Snips.isConfigValid(INI_TV)
+
+       Snips.publishEndSession(:noip)
+       return true
+    end
 
     if onOrOff == "OFF"
         Snips.publishEndSession(:switchoff)
-        goHome(Snips.getConfig(INI_FIRE_IP))
-        switchoff(Snips.getConfig(INI_FIRE_IP))
-        switchoffTV(Snips.getConfig(INI_TV))
+        goHome()
+        amazonOFF()
+        tvOFF()
     else
         Snips.publishEndSession(:switchon)
-        switchonTV(Snips.getConfig(INI_TV))
-        switchon(Snips.getConfig(INI_FIRE_IP))
+        switchonTV()
+        amazonON()
         sleep(10)
-        selectAmazonInTV(Snips.getConfig(INI_TV))
+        selectAmazonInTV()
 
         if device == "ARD_media_centre"
-            goARD(Snips.getConfig(INI_TV))
+            amazonARD()
         elseif device == "ARD_media_centre"
-            goZDF(Snips.getConfig(INI_TV))
+            amazonZDF()
         end
     end
     return false

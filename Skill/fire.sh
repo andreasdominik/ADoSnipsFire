@@ -2,8 +2,9 @@
 #
 # control fireTv via adb
 
+IP=$1  # set to 192.168.42.153 by dhcp
+shift
 COMMANDS=$@
-IP=amazon-fire  # set to 192.168.42.153 by dhcp
 PORT=5555
 ADB=adb
 SEND_KEY="$ADB -s $IP:$PORT shell input keyevent"

@@ -15,7 +15,7 @@ function amazonON()
 end
 
 function amazonOFF()
-    adbCmds("sleep")
+    adbCmds(ip, "sleep")
 end
 
 function amazonARD()
@@ -26,12 +26,17 @@ function amazonZDF()
     adbCmds("zdf")
 end
 
+function goHome()
+    adbCmds("home")
+end
+
 
 
 
 function adbCmds(cmds)
 
-    return tryrun(`$ADB $(split(cmds))`, errorMsg =
-    """An error occured while sending commands $cmds
-    to Amazon fire."""
+    ip = Snips.getConfig(INI_FIRE_IP)
+    return tryrun(`$ADB $ip $(split(cmds))`, errorMsg =
+                        """An error occured while sending commands $cmds
+                        to Amazon fire."""
 end
