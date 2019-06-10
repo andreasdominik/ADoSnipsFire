@@ -15,7 +15,7 @@ function amazonON()
 end
 
 function amazonOFF()
-    adbCmds(ip, "sleep")
+    adbCmds("sleep")
 end
 
 function amazonARD()
@@ -33,10 +33,10 @@ end
 
 
 
-function adbCmds(cmds)
+function adbCmds(cmd)
 
     ip = Snips.getConfig(INI_FIRE_IP)
-    return Snips.tryrun(`$ADB $ip $(split(cmds))`, errorMsg =
+    return Snips.tryrun(`$ADB $ip $cmd`, errorMsg =
                         """An error occured while sending commands $cmds
                         to Amazon fire.""")
 end
@@ -61,7 +61,7 @@ function tvOFF()
 
     trigger = Dict(:room => Snips.getSiteId(),
                    :device => Snips.getConfig(INI_TV),
-                   :commands => ["AV", "up", "up", "standby"],
+                   :commands => ["AV", "up", "up", "center", "standby"],
                    :delay => 0.5
                    )
 

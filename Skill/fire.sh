@@ -4,7 +4,7 @@
 
 IP=$1  # set to 192.168.42.153 by dhcp
 shift
-COMMANDS=$@
+COMMAND=$1
 PORT=5555
 ADB=adb
 SEND_KEY="$ADB -s $IP:$PORT shell input keyevent"
@@ -16,9 +16,7 @@ ZDF=com.zdf.android.mediathek
 
 adb connect amazon-fire
 
-for CMD in $COMMANDS ; do
-
-  case $CMD in
+  case $COMMAND in
     wake)
       $SEND_KEY KEYCODE_WAKEUP
       ;;
@@ -65,5 +63,3 @@ for CMD in $COMMANDS ; do
       $ADB -s $IP:$PORT shell am start -n ${MAIN::-1}
       ;;
     esac
-    sleep 0.5
-    done
