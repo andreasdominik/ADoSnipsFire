@@ -50,10 +50,10 @@ function switchOnOffActions(topic, payload)
         tvOFF()
     else
         Snips.publishEndSession(:switchon)
-        switchonTV()
+        tvSwitchon()
         amazonON()
         sleep(10)
-        selectAmazonInTV()
+        tvSelectAmazon()
 
         if device == "ARD_media_centre"
             amazonARD()

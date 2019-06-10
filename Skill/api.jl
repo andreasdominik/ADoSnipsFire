@@ -40,3 +40,31 @@ function adbCmds(cmds)
                         """An error occured while sending commands $cmds
                         to Amazon fire."""
 end
+
+
+
+
+
+function tvSwitchon()
+
+    trigger = Dict(:room => Snips.getSiteId(),
+                   :device => Snips.getConfig(INI_TV),
+                   :commands => ["wakeup"],
+                   :delay => 0.5
+                   )
+
+    Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
+end
+
+
+
+function tvSelectAmazon()
+
+    trigger = Dict(:room => Snips.getSiteId(),
+                   :device => Snips.getConfig(INI_TV),
+                   :commands => ["AV", "down", "down", "center"],
+                   :delay => 0.5
+                   )
+
+    Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
+end
