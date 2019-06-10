@@ -28,7 +28,7 @@ const SLOT_ON_OFF = "on_or_off"
 # name of entry in config.ini:
 #
 const INI_FIRE_IP = "fire_ip"
-const INI_TV = "tv_viera"
+const INI_TV = "tv"
 
 #
 # link between actions and intents:
@@ -41,9 +41,9 @@ const INI_TV = "tv_viera"
 # Language-dependent settings:
 #
 if LANG == "de"
-    Snips.registerIntentAction("pleaseRepeatDE", templateAction)
+    Snips.registerIntentAction("ADoSnipsOnOffDE", switchOnOffActions)
 elseif LANG == "en"
-    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
+    Snips.registerIntentAction("ADoSnipsOnOffEN", switchOnOffActions)
 else
-    Snips.registerIntentAction("pleaseRepeatEN", templateAction)
+    Snips.registerIntentAction("ADoSnipsOnOffDE", switchOnOffActions)
 end
