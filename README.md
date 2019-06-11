@@ -55,8 +55,7 @@ will do the job!).
 ## Ecosystem
 
 The skill is part of the QnD-framework for Snips and intented to be used together
-with the Skills `ADoSnipsHermesQnd<DE/EN>`, `ADoSnipsTVViera<DE/EN>` and
-`ADoSnipsKodi<DE/EN>`. All together
+with the Skills `ADoSnipsHermesQnd<DE/EN>`, `ADoSnipsTVViera<DE/EN>`, `ADoSnipsFire<DE/EN>` and `ADoSnipsKodi<DE/EN>`. All together
 works like charm in my HDTV setting with a Panasonic plasma, an Amazon Stick,
 Libreelec/kodi on a RPi and Snips on a RPi (all connected via IP and HDMI/CEC).
 
@@ -64,8 +63,8 @@ In other settings (and all settings are different) the skills will
 most probably *not* work out-of-the-box. However, the apps are developped
 with 2 levels of API (like shown in the framework documentation) and implement
 more functionality as currently used by the skills. Therefore it should be easy
-to fork the apps and adapt the code to whatever one needs by calling the
-proper API fnctions.
+to fork the apps and adapt the code to whatever is necessary just by calling the
+proper API functions.
 
 # Julia
 
