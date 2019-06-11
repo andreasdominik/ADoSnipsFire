@@ -14,7 +14,7 @@ START_APP="$ADB -s $IP:$PORT shell am start -n"
 ARD=de.swr.ard.avp.mobile.android.amazon
 ZDF=com.zdf.android.mediathek
 
-adb connect amazon-fire
+adb connect $IP
 
   case $COMMAND in
     wake)

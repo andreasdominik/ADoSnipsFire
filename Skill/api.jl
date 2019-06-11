@@ -11,34 +11,37 @@ ADB = "$(Snips.getAppDir())/Skill/fire.sh"
 
 
 function amazonON()
-    adbCmds("wake")
+    adbCmd("wake")
 end
 
 function amazonOFF()
-    adbCmds("sleep")
+    adbCmd("sleep")
 end
 
 function amazonARD()
-    adbCmds("ard")
+    adbCmd("ard")
 end
 
 function amazonZDF()
-    adbCmds("zdf")
+    adbCmd("zdf")
 end
 
 function goHome()
-    adbCmds("home")
+    adbCmd("home")
 end
 
 
 
 
-function adbCmds(cmd)
+function adbCmd(cmd)
 
     ip = Snips.getConfig(INI_FIRE_IP)
-    return Snips.tryrun(`$ADB $ip $cmd`, errorMsg =
-                        """An error occured while sending commands $cmds
+    adb = `$ADB $ip $cmd`
+    println(">>>> ADB command: $adb")
+    result = Snips.tryrun(adb, errorMsg =
+                        """An error occured while sending commands $cmd
                         to Amazon fire.""")
+    println(">>>> ADB result: $result")
 end
 
 
@@ -49,19 +52,20 @@ function tvON()
 
     trigger = Dict(:room => Snips.getSiteId(),
                    :device => Snips.getConfig(INI_TV),
-                   :commands => ["wakeup"],
+                   :commands => ["susi", "wait20", "AV", "up", "up", "center"],
                    :delay => 0.5
                    )
 
     Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
 end
+
 
 
 function tvOFF()
 
     trigger = Dict(:room => Snips.getSiteId(),
                    :device => Snips.getConfig(INI_TV),
-                   :commands => ["AV", "up", "up", "center", "standby"],
+                   :commands => ["TV", "standby"],
                    :delay => 0.5
                    )
 
@@ -70,13 +74,13 @@ end
 
 
 
-function tvSelectAmazon()
-
-    trigger = Dict(:room => Snips.getSiteId(),
-                   :device => Snips.getConfig(INI_TV),
-                   :commands => ["AV", "down", "down", "center"],
-                   :delay => 0.5
-                   )
-
-    Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
-end
+# function tvSelectAmazon()
+#
+#     trigger = Dict(:room => Snips.getSiteId(),
+#                    :device => Snips.getConfig(INI_TV),
+#                    :commands => ["AV", "down", "down", "center"],
+#                    :delay => 0.5
+#                    )
+#
+#     Snips.publishSystemTrigger("ADoSnipsTVViera", trigger)
+# end
