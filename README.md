@@ -3,7 +3,7 @@
 This is a skill for the SnipsHermesQnD framework for Snips.ai
 to control an Amazon Fire Stick.
 
- The full documentation of the QnD franework is just work-in-progress!
+ The full documentation of the QnD framework is just work-in-progress!
  Current version can be visited here:
 
  [Framework documentation](https://andreasdominik.github.io/ADoSnipsQnD/dev)
@@ -23,6 +23,10 @@ Supported commands include only:
 
 In addition the app switches on/off the connected tv set, via a QnD system trigger.
 In order to work, the tv-skill (`ADoSnipsTVVieraDE`) must be installed as well.
+
+All commands handled by the connected TV (such as `pause`, `play`, `mute`, etc.)
+will work as well, if the TV-skill is installed.
+
 
 ## config.ini
 
@@ -48,6 +52,20 @@ how to prepare the Fire Stick to ADB
 In addition it is necessary to install `adb` on the RPi (`sudo apt install adb`
 will do the job!).
 
+## Ecosystem
+
+The skill is part of the QnD-framework for Snips and intented to be used together
+with the Skills `ADoSnipsHermesQnd<DE/EN>`, `ADoSnipsTVViera<DE/EN>` and
+`ADoSnipsKodi<DE/EN>`. All together
+works like charm in my HDTV setting with a Panasonic plasma, an Amazon Stick,
+Libreelec/kodi on a RPi and Snips on a RPi (all connected via IP and HDMI/CEC).
+
+In other settings (and all settings are different) the skills will
+most probably *not* work out-of-the-box. However, the apps are developped
+with 2 levels of API (like shown in the framework documentation) and implement
+more functionality as currently used by the skills. Therefore it should be easy
+to fork the apps and adapt the code to whatever one needs by calling the
+proper API fnctions.
 
 # Julia
 
