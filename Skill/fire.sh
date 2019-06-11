@@ -51,13 +51,13 @@ adb connect $IP
       $SEND_KEY KEYCODE_MEDIA_PLAY_PAUSE
       ;;
     ard)
-      $SEND_KEY KEYCODE_WAKEUP
+      # $SEND_KEY KEYCODE_WAKEUP
       MAIN=$($ADB -s $IP:$PORT shell pm dump $ARD | grep -A 1 "MAIN" | \
                   grep $ARD | awk '{print $2}' | grep $ARD)
       $ADB -s $IP:$PORT shell am start -n ${MAIN::-1}
       ;;
     zdf)
-      $SEND_KEY KEYCODE_WAKEUP
+      # $SEND_KEY KEYCODE_WAKEUP
       MAIN=$($ADB -s $IP:$PORT shell pm dump $ZDF | grep -A 1 "MAIN" | \
                   grep $ZDF | awk '{print $2}' | grep $ZDF)
       $ADB -s $IP:$PORT shell am start -n ${MAIN::-1}

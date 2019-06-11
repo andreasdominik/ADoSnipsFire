@@ -53,13 +53,13 @@ function switchOnOffActions(topic, payload)
     else
         Snips.publishEndSession(:switchon)
         amazonON()
-        tvON()
 
         if device == "ARD_media_centre"
             amazonARD()
-        elseif device == "ARD_media_centre"
+        elseif device == "ZDF_media_centre"
             amazonZDF()
         end
+        tvON()
     end
     return false
 end
