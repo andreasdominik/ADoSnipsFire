@@ -5,11 +5,6 @@
 
 ADB = "$(Snips.getAppDir())/Skill/fire.sh"
 
-
-
-
-
-
 function amazonON()
     adbCmd("wake")
 end
@@ -52,7 +47,7 @@ function tvON()
 
     trigger = Dict(:room => Snips.getSiteId(),
                    :device => Snips.getConfig(INI_TV),
-                   :commands => ["susi", "wait20", "AV", "up", "up", "center"],
+                   :commands => ["susi", "wait20", "AV", "up", "center"],
                    :delay => 0.5
                    )
 
