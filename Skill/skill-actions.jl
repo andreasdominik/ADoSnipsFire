@@ -51,6 +51,8 @@ function switchOnOffActions(topic, payload)
         sleep(0.5)
         tvOFF()
     else
+        stopListen()
+        Snips.publishSay(:not_listen)
         Snips.publishEndSession(:switchon)
         amazonON()
 
