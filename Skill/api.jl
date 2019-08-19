@@ -32,11 +32,11 @@ function adbCmd(cmd)
 
     ip = Snips.getConfig(INI_FIRE_IP)
     adb = `$ADB $ip $cmd`
-    println(">>>> ADB command: $adb")
+    Snips.printDebug("ADB command: $adb")
     result = Snips.tryrun(adb, errorMsg =
                         """An error occured while sending commands $cmd
                         to Amazon fire.""")
-    println(">>>> ADB result: $result")
+    Snips.printDebug("ADB result: $result")
 end
 
 

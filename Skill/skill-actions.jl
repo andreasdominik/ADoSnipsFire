@@ -8,7 +8,7 @@ function switchOnOffActions(topic, payload)
 
     # log:
     #
-    println("[ADoSnipsFire]: action switchOnOffActions() started.")
+    Snips.printLog("action switchOnOffActions() started.")
 
     # ignore, if not responsible (other device):
     #
@@ -31,8 +31,6 @@ function switchOnOffActions(topic, payload)
         Snips.publishEndSession(:dunno)
         return true
     end
-
-    # println(">>> $onOrOff, $device")
 
     # check ini vals:
     #
