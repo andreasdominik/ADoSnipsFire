@@ -50,7 +50,7 @@ function switchOnOffActions(topic, payload)
         tvOFF()
     else
         stopListen()
-        Snips.publishSay(:not_listen)
+        # Snips.publishSay(:not_listen)
         Snips.publishEndSession(:switchon)
         amazonON()
 
