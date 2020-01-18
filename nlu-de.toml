@@ -9,7 +9,9 @@
 # developer = "andreasdominik"
 #
 #
-# [inventory]
+[inventory]
+intents = []
+slots = []
 #
 #
 # # define slots:
