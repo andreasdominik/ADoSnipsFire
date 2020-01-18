@@ -1,0 +1,30 @@
+# Intent definition for Amazon-Fire skill
+#
+#  (c) A. Dominik, 2020
+#
+# The skill has no own intent, but uses the on/off of
+# the QnD-framework instead.
+#
+# skill = "ADoSnipsOnOffDE"
+# developer = "andreasdominik"
+#
+#
+# [inventory]
+#
+#
+# # define slots:
+# # Types: Any/List/InstantTime/Currency/Number/Ordinal/...
+# #
+# [slot]
+# slot_type = "ListOfValues"
+#
+#         [slot.synonyms]
+#
+# # define phrases for intent recognition:
+# # exact, regex, part
+# #
+# [SetLightsSettings]
+# disable_on_start = false
+#
+# simple1 = "partial: <<Bitte|>> mache? <<bitte|>> <<das|den|die>> <<device>> <<light_settings>>"
+# s1_with_room = "partial: <<Bitte|>> mache? <<bitte|>> <<das|den|die>> <<device>> <<im|in der>> <<room>> <<light_settings>>"
