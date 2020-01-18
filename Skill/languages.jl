@@ -1,7 +1,7 @@
-Snips.addText("de", :noip, "Ich finde die Adresse des Fire Sticks nicht in der config Datei!")
+Snips.addText("de", :noip, "Ich finde die Adresse des Amazon Fire nicht in der config Datei!")
 Snips.addText("de", :dunno, "Ich habe nicht verstanden was ich tun soll!")
-Snips.addText("de", :switchon, "Ich schalte den Fernseher und den Fire Stick ein. Bitte einen Moment Geduld")
-Snips.addText("de", :switchoff, "Ich schalte den Fernseher und den Fire Stick aus.")
+Snips.addText("de", :switchon, "Ich schalte den Fernseher und den Amazon Fire ein. Bitte einen Moment Geduld")
+Snips.addText("de", :switchoff, "Ich schalte den Fernseher und den Amazon Fire aus.")
 Snips.addText("de", :ok, "OK.")
 
 Snips.addText("de", :not_listen, "Ich höre jetzt nicht mehr zu!")
